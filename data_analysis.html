@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="D:\\my_lab\\data_analysis.css" >
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body background="https://s21.ax1x.com/2024/10/24/pAwZAIA.jpg">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <div class="home">
+        <div class="content">
+            <div class="stars"></div>
+            <img class="bgc" src="https://s21.ax1x.com/2024/10/24/pAwZZGt.jpg" width="100%" alt="">
+            <h3 class="title">欢迎来到人机交互实验作业网站</h3>
+            <h3 class="titles">组员：蒋曙阳，郑皓文，朱家瑞，邵奇</h3>
+            <img class="icon" src="https://s21.ax1x.com/2024/10/24/pAwZkad.png" alt="">
+            <div class='ribbon'>
+             <label class="spantop">  <span id="Team_intro_top",name="Team_intro_top">Team intro</span></label>
+             <label class="spantop">   <span id="Survey_data_top",name="Survey_data_top">Survey Data</span></label>
+             <a href="https://yeruoxiangchen.github.io"> <label class="spantop">  <span id="Interview_data_top">Interview Data</span></label></a>
+            </div>
+
+        </div>
+        <div class="introduce">
+            <div class id="Team_intro"></div>
+            <div class="introduce_item">
+                <img class="introduce_item_img" src="https://s21.ax1x.com/2024/10/24/pAwZeRP.jpg" alt="">
+                <span class="introduce_item_title">
+                    网站制作：蒋曙阳
+                    <br><br>
+                    文案提供：邵奇
+                    <br><br>
+                    pdf制作：朱家瑞
+            </div>
+        </div>    
+        <div class id="Survey_Data"></div>
+        <div class="introduce">
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/02/pADOIk8.png" alt="" title="位置分布">
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/02/pADO4Tf.png" alt="" title="你每周的平均锻炼次数是多少？">
+        </div>
+        <div class="introduce">
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/02/pADOfmt.png" alt="" title="你通常的锻炼的时段在？">
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/02/pADO26A.png" alt="" title="您的锻炼场所包括?">
+        </div>
+        <div class="introduce">
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/02/pADOROI.png" alt="" title="您偏爱的锻炼类型是?">
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/02/pADOh0P.png" alt="" title="你锻炼的主要目标为?">
+        </div>
+        <div class="introduce">
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/02/pADOotS.png" alt="" title="您是否使用过健身app?">
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/02/pADOTfg.png" alt="" title="你目前使用最多的app为?">
+        </div>
+    
+        <div class="introduce_item" id="test" >
+            <br>
+            <br>
+            分析健身主题的调查问卷结果后，我们学到了：
+            <br>
+            1.群体特征： 人口统计信息可以帮助我们了解受访者的背景，如年龄、性别、职业等，从而进行更有针对性的分析。
+            <br>
+            2.行为模式：分析数据可以得出受访者行为模式。例如大多数人选择有氧肌肉训练。
+            <br>
+            3.需求与偏好：通过选择题，可以了解目标群体的需求、偏好和期望。例如大部分人选择用健身app是为了跟踪训练。
+            <br>
+            4.满意度和反馈：调查可以反映用户的满意度，帮助识别出需要改进的领域。如多数人认为互动方面需要改进。
+            <br>
+            5.市场趋势：从问卷中得到大多数人的app使用情况，分析出用户最需要和不需要的功能，便于产品下一步的改进的更新，以便迎合市场需求。
+            <br>
+            <br>
+            在调查结果中，令人意想不到的是有85%的人都用过健身app，足以看出现在智能化程度之高和手机app的广泛应用。传统视频授课，书籍教学在逐渐被淘汰，要想迎合用户需求，便需要实时教学和实时反馈，手机app应用范围广，可交互性强，是适应时代的产物。             
+            <img class="introduce_item_img" src="https://s21.ax1x.com/2024/10/24/pAwZlZQ.jpg" alt="">
+        </div>
+    </div>
+    <script>                                   
+        $('#Team_intro_top').click(function() {
+    $('html,body').animate({ scrollTop: $("#Team_intro").offset().top - 8 }, 800)
+});
+$('#Survey_data_top').click(function() {
+    $('html,body').animate({ scrollTop: $("#Survey_Data").offset().top - 8 }, 800)
+});
+
+    
+    </script>
+</body>
+
+
+</html>
