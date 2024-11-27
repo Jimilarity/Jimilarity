@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;  
+    overflow: visible; 
+    background-image: url("D:/my_lab/img/AIsui.png");
+    background-size:cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    /* border: 1px,solid,#000; */
+    height: 150px;
+    width:100%;
+}
+
+.spantop{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    width:100%;
+    height:50px;
+     background-color: rgba(0,0,0,0.05); 
+    /* position: fixed;  */
+    
+} 
+.spantop a{
+    margin: 0 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color:#fff;
+    font-size: 18px;
+}
+
+.toplink{
+    height:100%;
+    line-height: 50px;
+}
+
+.toplink:hover{
+    background-color:rgba(173, 216, 230,0.5) ;
+}
+
+.search_box{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* flex-wrap: nowrap; */
+    position: relative;
+    border:2px,solid,rgba(128,128,128,0.1);
+    border-radius: 5px;
+    margin:auto;
+    width:849px;
+    height:56px;
+    margin-bottom:0px;
+    
+}
+
+.input_box{
+    background: transparent;
+    border-style: none;
+    margin: 10px;
+    padding-left:5px;
+    outline: none;
+    height:80%;
+    flex:1;
+    font-size: 100%;
+    
+}
+
+.input_box::placeholder {
+    color: rgb(105, 105, 105);
+    line-height: 80%;
+    
+    
+}
+
+.input_box:focus{
+    background-color: rgba(128,128,128,0.2);
+}
+
+.search_button{
+    display: flex;
+    justify-content: center;
+    margin:10px;
+    border-radius: 5px;
+    height:80%; 
+    aspect-ratio: 1 / 1;
+}
+
+.search_button:hover{
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+.search_icon{
+    width:100%;
+    height:100%;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top:10px;
+    margin-bottom:10px;
+    border: 1px solid black;
+    width:100%;
+    height:60%;
+    gap:20px;
+}
+
+.resource{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    flex:0 1 20%;
+    margin:0;
+    /* border: 1px solid red; */
+    /* background: url(D:/my_lab/img/tongsheng.jpg)  no-repeat   center center / cover ;  */
+    /* background-image: url(D:\\my_lab\\img\\tongsheng.jpg); */
+    
+    height:40%; 
+}
+
+.preview_link{
+    display: flex;
+    height:80%;
+    width:80%;
+    
+}
+
+.preview_img{
+    border-radius: 5px;
+    width:100%;
+    height:100%;
+}
+
+.preview_img:hover{
+    transform: scale(1.08);
+}
+
+.preview_menu{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    /* border:1px,solid,black; */
+    height:15%;
+    width:80%;
+
+}
+
+.preview_desc{
+    line-height: 100%;
+    font-size: 90%;
+    font-weight: 600;
+    /* color: #fff; */
+    width:90%;
+}
+
+
+.preview_button{
+    border-radius: 5px;
+    height: 80%;
+    aspect-ratio: 1 / 1;
+    
+    
+}
+
+.preview_button:hover{
+    /* flex:0; */
+    cursor: pointer;
+    background-color: rgba(128,128,128,0.3); 
+     
+}
+
+
+
+
+.bottom_menu{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    /* border:1px solid blue; */
+    width:100%;
+    height:10%;
+}
+
+.bottom_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin:auto;
+    border-radius: 5px;
+    height:100%;
+    aspect-ratio: 1 / 1;
+}
+
+.bottom_button:hover{
+    background-color: rgba(173, 216, 230,0.5)
+}
+
+.bottom_link{
+    height:80%;
+}
+
+.bottom_img{
+    width:100%;
+    height:100%;
+}
+
