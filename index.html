@@ -1,226 +1,154 @@
 <!DOCTYPE html>
+<html lang="zh-CN">
 <head>
     <title></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Jimilarity/Jimilarity@refs/heads/main/protype.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Jimilarity/Jimilarity@refs/heads/main/index.css">
+    
 </head>
-<body background="https://s21.ax1x.com/2024/10/24/pAwZAIA.jpg">
-    <canvas id="fireworks"></canvas>
-    <script>
-        const canvas = document.getElementById('fireworks');
-        const ctx = canvas.getContext('2d');
-    
-        
-        function resizeCanvas() {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-    
-        
-        class Particle {
-          constructor(x, y, color) {
-            this.x = x;
-            this.y = y;
-            this.color = color;
-            this.radius = Math.random() * 2 + 1; 
-            this.alpha = 1; 
-            this.velocity = {
-              x: (Math.random() - 0.5) * 10,
-              y: (Math.random() - 0.5) * 10,
-            };
-          }
-    
-          draw() {
-            ctx.save();
-            ctx.globalAlpha = this.alpha; 
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-            ctx.restore();
-          }
-    
-          update() {
-            this.x += this.velocity.x;
-            this.y += this.velocity.y;
-            this.alpha -= 0.01; 
-          }
-        }
-    
-        let particles = [];
-    
-        
-        function createFirework(x, y) {
-          const colors = ['#ff6666', '#ffcc66', '#66ff66', '#66ccff', '#ff66ff'];
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          for (let i = 0; i < 50; i++) {
-            particles.push(new Particle(x, y, color));
-          }
-        }
-    
-        
-        function animate() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height); 
-          particles.forEach((particle, index) => {
-            if (particle.alpha <= 0) {
-              particles.splice(index, 1); 
-            } else {
-              particle.update();
-              particle.draw();
-            }
-          });
-          requestAnimationFrame(animate);
-        }
-    
-       
-        window.addEventListener('click', (e) => {
-          createFirework(e.clientX, e.clientY);
-        });
-    
-        
-        animate();
-      </script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<body>
     <div class="home">
-        <div class="content">
-            <div class="stars"></div>
-            <img class="bgc" src="https://s21.ax1x.com/2024/10/24/pAwZZGt.jpg" width="100%" alt="">
-            <h3 class="title">欢迎来到人机交互实验作业网站</h3>
-            <h3 class="titles">组员：蒋曙阳，邵奇，朱家瑞，郑皓文</h3>
-            <img class="icon" src="https://s21.ax1x.com/2024/10/24/pAwZkad.png" alt="">
-            <div class='ribbon'>
-             <label class="spantop">  <span id="Team_intro_top",name="Team_intro_top">Team intro</span></label>
-             <label class="spantop">   <span id="Project_Proposal_top",name="Project_Proposal_top">Model</span></label>
-             <label class="spantop">  <span id="Data_collection_top">Story</span></label>
-            </div>
-
-        </div>
-        <div class="introduce">
-            <div class id="Team_intro"></div>
-            <div class="introduce_item">
-                <img class="introduce_item_img" src="https://s21.ax1x.com/2024/10/24/pAwZeRP.jpg" alt="">
-                <span class="introduce_item_title">
-                    网站制作：蒋曙阳
-                    <br><br>
-                    内容制作：朱佳瑞，邵奇，郑皓文
-                    <br><br>
-                    pdf制作：朱佳瑞
-                </span>
-                
-            </div>
-            <div class id="Project_Proposal"></div>
-            <div class="introduce_item">
-
-                <h4>     FlowModel</h4>
-                <br>
-                <br>
-                <br>
-                针对大学生的健康管理应用，旨在帮助大学生记录日常健康数据（如睡眠、运动、饮食），并与学校健康中心共享，以便在健康出现风险时提供及时帮助。
-                <br>
-                <br>
-                <br>
-                流程模型：
-                <br>
-                - 大学生：通过应用记录健康数据（如睡眠、运动、心情），并接收健康建议。<br>
-                - 大学健康中心：可以查看学生的健康报告，并在需要时提供支持（如心理咨询、健康建议等）。<br>
-                - 学业辅导员：在获得学生授权的情况下，可接收健康报告和建议，帮助学生更好地平衡学业与健康。
-                <br>
-                <br>
-                <br>
-                流程图：
-                <br>
-                大学生上传数据到健康应用
-                -> 健康应用自动生成报告并检测异常
-                -> 异常数据发送给健康中心
-                -> 健康中心或辅导员提供反馈和帮助建议
-
-                <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/19/pARq05n.png" alt="">
-            </div>
+        
+        <div class="title">
+            <div class="search_box">
+                <input type="text"  placeholder="请输入关键字" class="input_box">
+                <div class="search_button">
+                    <a href="#">
+                        <img src="D:\\my_lab\\my_app\\搜索.png"  class="search_icon"    alt="">
+                    </a>
+                </div>
+                <script>
+                    const input = document.querySelector('.input_box');
+                    const container = document.querySelector('.search_box');
             
-            <div class="introduce_item">
-                <img class="introduce_item_img" src="https://s21.ax1x.com/2024/10/27/pA08JX9.jpg" alt="">
-                <h5 class="right"> HMW（How Might We）问题</h5>
-                <br><br><br>
-                1. 我们如何才能帮助学生更方便地记录并管理自己的健康数据？<br><br>
-                2. 我们如何才能让学生在健康数据出现异常时收到及时提醒？<br><br>
-                3. 我们如何才能为健康中心提供高效的学生健康监测工具？<br><br>
-                4. 我们如何才能帮助辅导员更好地了解学生的健康状况，以便提供支持？<br><br>
-                5. 我们如何才能提高学生对健康管理的重视，鼓励他们保持健康的生活习惯？<br><br>
-                6. 我们如何才能在保证隐私的情况下，让学校更好地支持学生的身心健康？<br><br>
-
+                    input.addEventListener('focus', function() {
+                        container.style.borderColor = 'pink';  
+                    });
+            
+                    
+                    input.addEventListener('blur', function() {
+                        container.style.borderColor = '#ccc';  
+                    });
+                </script>
             </div>
-            <div class="introduce_item">
-                <h5 > Personas（人物角色）</h5>
-                
-                <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/19/pARqWVJ.png" alt="">
-                <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/19/pARqfa9.png" alt="">
-            </div>            
-            <div class id="Data_collection"></div>        
-            <div class="test" id="test" >
-
-                    <h4>Storyboard 1：李健康的健康管理体验</h4><br><br>
-                    1. 李健康每天早晨打开应用，记录昨晚的睡眠时长和心情。<br><br>
-                    2. 应用自动检测到他最近几天的睡眠时间较短，显示健康警示。<br><br>
-                    3. 应用向他推荐了一些改善睡眠的建议，如提前一小时关手机、放松心情。<br><br>
-                    4. 他尝试应用建议，记录每天的心情和精力变化。<br><br>
-                    5. 一周后，应用生成报告，显示他的精力和心情有所改善。<br><br>
-                    6. 健康报告也传送给健康中心，帮助咨询师了解他的健康变化。<br><br>
-                    7. 王老师联系了李健康，提供额外的心理支持和建议。<br><br>
-                    8. 李健康感到应用的帮助显著，决定坚持使用。<br><br>
-                    <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/19/pARqqqe.png" alt="">
-                    <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/19/pARqbrD.png" alt="">
+    
+            <div class="spantop">
+                <span class="toplink"><a href="#">个人查重</a></span>
+                <span class="toplink"><a href="#">AI助手</a></span>
+                <span class="toplink"><a href="#">智能翻译</a></span>
+                <span class="toplink"><a href="#">优秀论文</a></span>
             </div>
-            <div class="test" id="test">
-                    <h4>Storyboard 2：王老师的学生健康监测</h4><br><br>
-                    1. 王老师在应用中查看学生健康数据，关注高风险学生的情况。<br><br>
-                    2. 他发现李健康最近的报告显示他的睡眠和情绪波动较大。<br><br>
-                    3. 王老师通过应用查看李健康授权的健康数据。<br><br>
-                    4. 他决定联系李健康，安排一个健康咨询时间。<br><br>
-                    5. 李健康在咨询中得到了舒缓压力的建议。<br><br>
-                    6. 王老师记录了咨询结果，并在应用中设置了后续关注。<br><br>
-                    7. 后续应用显示李健康的健康数据逐渐恢复正常。<br><br>
-                    8. 王老师通过应用反馈，感到这个系统帮助他更好地支持学生。<br><br>
-                    <img class="introduce_item_img" src="https://s21.ax1x.com/2024/11/19/pARqOVH.jpg" alt="">
-            </div>     
+        </div>
+        
+
+        <div class="content">
+            <div class="resource">
+                <a href="#" class="preview_link">
+                    <img src="https://s21.ax1x.com/2024/11/23/pAfLJWn.jpg" class="preview_img" alt="">
+                </a>
+                <div class="preview_menu">
+                    <span class="preview_desc">ESG绿色溢出、供应链传导与企...</span>
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
+                </div>                   
+            </div>
+            <div class="resource">
+                <a href="#" class="preview_link">
+                    <img src="https://s21.ax1x.com/2024/10/27/pA08G6J.jpg" class="preview_img" alt="">
+                </a>
+                <div class="preview_menu">
+                    <span class="preview_desc">论新质生产力：内涵特征与重要...</span>
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
+                </div>                   
+            </div>
+            <div class="resource">
+                <a href="#" class="preview_link">
+                    <img src="https://s21.ax1x.com/2024/10/24/pAwMhef.jpg" class="preview_img" alt="">
+                </a>
+                <div class="preview_menu">
+                    <span class="preview_desc">Optimization of Production... </span>
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
+                </div>                   
+            </div>
+            <div class="resource">
+                <a href="#" class="preview_link">
+                    <img src="https://s21.ax1x.com/2024/10/24/pAwZmxf.jpg" class="preview_img" alt="">
+                </a>
+                <div class="preview_menu">
+                    <span class="preview_desc">An improved underwater r... </span>
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
+                </div>                   
+            </div>
+            <div class="resource">
+                <a href="#" class="preview_link">
+                    <img src="https://s21.ax1x.com/2024/10/24/pAwZZGt.jpg" class="preview_img" alt="">
+                </a>
+                <div class="preview_menu">
+                    <span class="preview_desc">Leveraging ResNet CNN and...</span>
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
+                </div>                   
+            </div>
+            <div class="resource">
+                <a href="#" class="preview_link">
+                    <img src="https://s21.ax1x.com/2024/10/24/pAwZlZQ.jpg" class="preview_img" alt="">
+                </a>
+                <div class="preview_menu">
+                    <span class="preview_desc">A Comparative Study Of R... </span>
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
+                </div>                   
+            </div>
+            <div class="resource">
+                <a href="#" class="preview_link">
+                    <img src="https://s21.ax1x.com/2024/10/24/pAwkp7R.jpg" class="preview_img" alt="">
+                </a>
+                <div class="preview_menu">
+                    <span class="preview_desc">ACM SIGIR Annual Business...</span>
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
+                </div>                   
+            </div>
+            <div class="resource">
+                <a href="#" class="preview_link">
+                    <img src="https://s21.ax1x.com/2024/10/27/pA08JX9.jpg" class="preview_img" alt="">
+                </a>
+                <div class="preview_menu">
+                    <span class="preview_desc">CNN-based Context Sensit...</span>
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
+                </div>                   
+            </div>
+        </div>
+
+        <div class="bottom_menu">
+
+            <div class="bottom_button">
+                <a href="#" class="bottom_link">
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4HXTg.png" class="bottom_img" alt="" title="选题">
+                </a>
+            </div>
+
+            <div class="bottom_button">
+                <a href="#" class="bottom_link">
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4HbOf.png" class="bottom_img" alt="" title="进度">
+                </a>
+            </div>
+
+            <div class="bottom_button">
+                <a href="#" class="bottom_link">
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4HO0S.png" class="bottom_img" alt="" title="首页">
+                </a>
+            </div>
+
+            <div class="bottom_button">
+                <a href="#" class="bottom_link">
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4HvkQ.png" class="bottom_img" alt="" title="资源">
+                </a>
+            </div>
+
+            <div class="bottom_button">
+                <a href="#" class="bottom_link">
+                    <img src="https://s21.ax1x.com/2024/11/28/pA4HLm8.png" class="bottom_img" alt="" title="个人">
+                </a>
+            </div>
         </div>    
     </div>
     
-    <script>                                   
-        $('#Team_intro_top').click(function() {
-    $('html,body').animate({ scrollTop: $("#Team_intro").offset().top - 8 }, 800)
-});
-$('#Project_Proposal_top').click(function() {
-    $('html,body').animate({ scrollTop: $("#Project_Proposal").offset().top - 8 },  800)
-});
-
-$('#Data_collection_top').click(function() {
-    $('html,body').animate({ scrollTop: $("#Data_collection").offset().top - 8 },  800)
-});
-/*
-var currentIndex = 0;
-
-function changeBg(){
-
-//定义要切换的背景图片，双引号里面，可以放任意多个
-
-var bgImgs = ["D:/my_lab/img/tongsheng.JPG","D:/my_lab/img/mansui.JPG","D:/my_lab/img/gongsi.jpg","D:/my_lab/img/sui.jpg"];
-
-$('#test').fadeTo('slow', 0.2, function()
-{
-if (currentIndex >= bgImgs.length)
-currentIndex = 0;
-
-$(this).css('background-image', 'url(' + bgImgs[currentIndex] + ')');
-}).fadeTo('slow', 1);
-
-currentIndex += 1;
-}
-setInterval("changeBg()", 5000); //设定定时切换，单位为毫秒，比如：30分钟=1800秒=1800000毫秒
-*/
-
-            </script>
 </body>
-
 
 </html>
