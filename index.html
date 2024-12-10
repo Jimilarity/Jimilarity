@@ -2,153 +2,229 @@
 <html lang="zh-CN">
 <head>
     <title></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Jimilarity/Jimilarity@refs/heads/main/index1.css">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Jimilarity/Jimilarity@refs/heads/main/index2.css">
 </head>
+
+<canvas id="fireworks"></canvas>
+    <script>
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+    
+        
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+    
+        
+        class Particle {
+          constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.radius = Math.random() * 2 + 1; 
+            this.alpha = 1; 
+            this.velocity = {
+              x: (Math.random() - 0.5) * 10,
+              y: (Math.random() - 0.5) * 10,
+            };
+          }
+    
+          draw() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha; 
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.restore();
+          }
+    
+          update() {
+            this.x += this.velocity.x;
+            this.y += this.velocity.y;
+            this.alpha -= 0.01; 
+          }
+        }
+    
+        let particles = [];
+    
+        
+        function createFirework(x, y) {
+          const colors = ['#ff6666', '#ffcc66', '#66ff66', '#66ccff', '#ff66ff'];
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          for (let i = 0; i < 50; i++) {
+            particles.push(new Particle(x, y, color));
+          }
+        }
+    
+        
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height); 
+          particles.forEach((particle, index) => {
+            if (particle.alpha <= 0) {
+              particles.splice(index, 1); 
+            } else {
+              particle.update();
+              particle.draw();
+            }
+          });
+          requestAnimationFrame(animate);
+        }
+    
+       
+        window.addEventListener('click', (e) => {
+          createFirework(e.clientX, e.clientY);
+        });
+    
+        
+        animate();
+      </script>
 <body>
     <div class="home">
+        <div class="title_fa">
+            <div class="title">
         
-        <div class="title">
-            <div class="search_box">
-                <input type="text"  placeholder="请输入关键字" class="input_box">
-                <div class="search_button">
-                    <a href="#">
-                        <img src="https://s21.ax1x.com/2024/11/28/pA4HH6P.png"  class="search_icon"    alt="">
-                    </a>
+                <div class="spantop">
+                    <span class="toplink active" data-target="section1">首页</span>
+                    <span class="toplink" data-target="section2">组员分工</span>
+                    <span class="toplink" data-target="section3">内容呈现</span>
+                    <span class="toplink" data-target="section4">优秀论文</span>
                 </div>
-                <script>
-                    const input = document.querySelector('.input_box');
-                    const container = document.querySelector('.search_box');
-            
-                    input.addEventListener('focus', function() {
-                        container.style.borderColor = 'pink';  
-                    });
-            
-                    
-                    input.addEventListener('blur', function() {
-                        container.style.borderColor = '#ccc';  
-                    });
-                </script>
-            </div>
-    
-            <div class="spantop">
-                <span class="toplink"><a href="#">个人查重</a></span>
-                <span class="toplink"><a href="#">AI助手</a></span>
-                <span class="toplink"><a href="#">智能翻译</a></span>
-                <span class="toplink"><a href="#">优秀论文</a></span>
             </div>
         </div>
         
 
-        <div class="content">
-            <div class="resource">
-                <a href="#" class="preview_link">
-                    <img src="https://s21.ax1x.com/2024/11/23/pAfLJWn.jpg" class="preview_img" alt="">
-                </a>
-                <div class="preview_menu">
-                    <span class="preview_desc">ESG绿色溢出、供应链传导与企...</span>
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
-                </div>                   
+        <div class="content"> 
+            <div id="section1" class="section"><div class="scontent">
+                <div class="stars"></div>
+                <!-- <img  src="D:\\my_lab\\img\\yaoyue.jpg" width="100%" alt=""> -->
+                <h3 class="stitle">欢迎来到人机交互实验作业网站</h3>
+                <h3 class="stitles">组员：蒋曙阳，郑皓文，朱家瑞，郑皓文</h3>  
+            </div></div>
+            <video class="video-bg" autoplay muted loop>
+                <source src="https://1001b.cn/chronus/url/v1/getVideoUrl/7f7019db5b724ef89068f2c7f3f21847" type="video/mp4">
+                您的浏览器不支持 HTML5 视频标签。
+            </video>
+            <div id="section2" class="section">
+                <div class="ssection2">
+                    <span class="teamwork">组员分工</span>
+                    <span class="teamwork">文案设计：朱佳瑞</span>
+                    <span class="teamwork">网站设计：蒋曙阳</span>
+                    <span class="teamwork">后期校对：邵奇，郑皓文</span>
+                </div>
+                
             </div>
-            <div class="resource">
-                <a href="#" class="preview_link">
-                    <img src="https://s21.ax1x.com/2024/10/27/pA08G6J.jpg" class="preview_img" alt="">
-                </a>
-                <div class="preview_menu">
-                    <span class="preview_desc">论新质生产力：内涵特征与重要...</span>
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
-                </div>                   
+            <div id="section3" class="section">
+                <div class="ssection3">
+                    <span class="critic_span">批评反馈总结<br>
+                        <p>总体声明:该大学生毕业设计管理的设计目标明确，旨在帮助学生完成毕业设计。然而，经过评审，应用在用户体验、功能性和界面设计上存在一些不足之处。以下是针对应用设计提出的具体问题和改进建议。</p>
+                        <br>
+                        识别出的问题与疑问
+                        <br>
+                        问题及问题分类
+                        <br>
+                        根据评审反馈，问题可以归纳为以下几类：
+                        <br>
+                        <p>1.设计方面
+                            <br>
+                            问题：有些设计元素可能过于复杂，导致用户的理解和使用产生困扰。
+                            <br> 
+                            严重性：高，复杂的设计会导致用户体验的下降。
+                            <br>
+                            问题：设计中缺少针对不同用户群体的适配。
+                            <br> 
+                            严重性：高，不同用户群体的需求差异性较大，未考虑这一点可能影响用户的广泛接受度。
+                            <br></p>
+                        <p>2.功能方面
+                            <br>
+                            问题：项目功能与用户需求的匹配度尚未完全明确。 
+                            <br>
+                            严重性：中等，可能导致开发过程中偏离用户真正的需求，浪费时间与资源。
+                            <br></p>
+                        <p>3.用户体验（UX）<br>
+                            问题：界面交互设计缺乏直观性，可能增加用户操作的难度。 <br>
+                            严重性：高，直接影响用户对系统的接受度和使用感受。<br>
+                            问题：页面风格不一致。 <br>
+                            严重性：中，会影响用户的使用体验。<br></p>
+                    </span>
+                </div>
             </div>
-            <div class="resource">
-                <a href="#" class="preview_link">
-                    <img src="https://s21.ax1x.com/2024/10/24/pAwMhef.jpg" class="preview_img" alt="">
-                </a>
-                <div class="preview_menu">
-                    <span class="preview_desc">Optimization of Production... </span>
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
-                </div>                   
-            </div>
-            <div class="resource">
-                <a href="#" class="preview_link">
-                    <img src="https://s21.ax1x.com/2024/10/24/pAwZmxf.jpg" class="preview_img" alt="">
-                </a>
-                <div class="preview_menu">
-                    <span class="preview_desc">An improved underwater r... </span>
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
-                </div>                   
-            </div>
-            <div class="resource">
-                <a href="#" class="preview_link">
-                    <img src="https://s21.ax1x.com/2024/10/24/pAwZZGt.jpg" class="preview_img" alt="">
-                </a>
-                <div class="preview_menu">
-                    <span class="preview_desc">Leveraging ResNet CNN and...</span>
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
-                </div>                   
-            </div>
-            <div class="resource">
-                <a href="#" class="preview_link">
-                    <img src="https://s21.ax1x.com/2024/10/24/pAwZlZQ.jpg" class="preview_img" alt="">
-                </a>
-                <div class="preview_menu">
-                    <span class="preview_desc">A Comparative Study Of R... </span>
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
-                </div>                   
-            </div>
-            <div class="resource">
-                <a href="#" class="preview_link">
-                    <img src="https://s21.ax1x.com/2024/10/24/pAwkp7R.jpg" class="preview_img" alt="">
-                </a>
-                <div class="preview_menu">
-                    <span class="preview_desc">ACM SIGIR Annual Business...</span>
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
-                </div>                   
-            </div>
-            <div class="resource">
-                <a href="#" class="preview_link">
-                    <img src="https://s21.ax1x.com/2024/10/27/pA08JX9.jpg" class="preview_img" alt="">
-                </a>
-                <div class="preview_menu">
-                    <span class="preview_desc">CNN-based Context Sensit...</span>
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4H7lt.png" class="preview_button" alt="">
-                </div>                   
+            <div id="section4" class="section">
+                <div class="ssection3">
+                    <span class="critic_span">
+                        针对每个问题的回应<br>
+
+<p>1.设计方面<br>
+
+    问题：设计元素过于复杂 <br>
+    来源：反馈中提到部分设计过于复杂，可能造成用户困惑。<br>
+    解决方案：我们将简化设计，突出关键功能，确保用户能够迅速理解和使用界面。<br>
+    问题：缺少适配不同用户群体的设计 <br>
+    来源：反馈强调了设计应考虑到不同用户群体的需求。<br>
+    解决方案：我们将根据用户调研数据，调整设计方案，确保产品能够适应不同用户群体的需求。<br></p>
+
+<p>2.功能方面<br>
+
+    问题：功能与用户需求不匹配 <br>
+    来源：反馈中提到缺乏明确的需求验证。<br>
+    解决方案：我们将进行更详细的用户调研，确保功能的设计紧密符合用户需求。<br></p>
+
+<p>3.用户体验（UX）<br>
+
+    问题：界面交互设计缺乏直观性<br>
+    来源：同行对界面的交互设计提出了改进意见。<br>
+    解决方案：我们将优化界面的交互流程，使用更加直观的设计元素，提升用户的学习和使用效率。<br>
+    
+    问题：页面风格不一致<br>
+    来源：反馈指出页面风格不一致可能影响用户体验。<br>
+    解决方案：我们将优化页面的设计，使得其更加美观、简洁。<br></p>
+预期改进<br>
+设计将变得更加简洁、直观，提升用户的学习曲线和使用效率。
+用户体验将得到显著改善，尤其是在功能匹配度和界面交互设计方面，减少用户的操作复杂度。通过更严格的用户调研和反馈机制，未来的设计与功能迭代将更符合目标用户群体的需求。
+
+
+                    </span>
+                </div>
             </div>
         </div>
-
-        <div class="bottom_menu">
-
-            <div class="bottom_button">
-                <a href="#" class="bottom_link">
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4HXTg.png" class="bottom_img" alt="" title="选题">
-                </a>
-            </div>
-
-            <div class="bottom_button">
-                <a href="#" class="bottom_link">
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4HbOf.png" class="bottom_img" alt="" title="进度">
-                </a>
-            </div>
-
-            <div class="bottom_button">
-                <a href="#" class="bottom_link">
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4HO0S.png" class="bottom_img" alt="" title="首页">
-                </a>
-            </div>
-
-            <div class="bottom_button">
-                <a href="#" class="bottom_link">
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4HvkQ.png" class="bottom_img" alt="" title="资源">
-                </a>
-            </div>
-
-            <div class="bottom_button">
-                <a href="#" class="bottom_link">
-                    <img src="https://s21.ax1x.com/2024/11/28/pA4HLm8.png" class="bottom_img" alt="" title="个人">
-                </a>
-            </div>
-        </div>    
+        
     </div>
-    
+    <script>
+        const navLinks=document.querySelectorAll('.toplink');
+        const sections=document.querySelectorAll('.section');
+        window.addEventListener('scroll',()=>{
+            console.log('当前滚动位置:', window.scrollY);
+            let currentSection='';
+            sections.forEach(section=>{
+                const sectionTop=section.offsetTop-80;
+                const sectionHeight=section.offsetHeight;
+                if(window.scrollY+5>sectionTop&&window.scrollY<sectionTop+sectionHeight){
+                    currentSection=section.getAttribute('id');
+                    console.log('sucess!');
+                    
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                console.log(link.getAttribute('data-target'));
+                if (link.getAttribute('data-target') === currentSection) {
+                    link.classList.add('active');
+                    
+                }
+            });
+        });
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetSection = document.getElementById(link.getAttribute('data-target'));
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+    </script>
+
 </body>
 
 </html>
